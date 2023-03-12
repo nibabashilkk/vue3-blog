@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Content from './Content.vue'
-import Submit from './Submit.vue'
-
+import { ref,computed } from 'vue'
+import Content from './CommentContent.vue'
+import Submit from './CommentSubmit.vue'
 </script>
 
 <template>
-  <Submit/>
-  <Content/>
+  <div>
+    <Submit/>
+    <Content/>
+  </div>
 </template>
 
 <style scoped>
