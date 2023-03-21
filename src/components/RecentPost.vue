@@ -47,8 +47,12 @@ let articleCardList = ref();
 
 getData();
 function getData(){
-  axios.get('api/article/getArticleByPage').then(data=>{
-    articleCardList.value = data.data.data;
+  axios.post('api/article/getRecentPost',{
+    "current":1,
+    "pageSize":10
+}).then(data=>{
+  console.log(data.data.data.data)
+    articleCardList.value = data.data.data.data;
   })
 }
 </script>
@@ -70,7 +74,6 @@ function getData(){
 #recent-post .recent-post-item img{
   width: 100%;
   height: 100%;
-  max-height: 14rem;
   border-radius: 12px;
 }
 #recent-post .recent-post-item .el-row,#recent-post .recent-post-item{

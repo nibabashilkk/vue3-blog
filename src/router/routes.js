@@ -10,6 +10,12 @@ const routes = [
         name: 'daohang',
         title: 'daohang',
         component: () => import('../components/NavBar.vue'), //.vue不能省略
+    },
+    {
+        path: '/p/:articleId',
+        name: '文章页面',
+        title: '文章',
+        component: () => import('../components/Article.vue'), //.vue不能省略
     }
 ]
 export default routes
