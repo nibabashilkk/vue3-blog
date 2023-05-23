@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import router from './router/index'
-import ElementPlus from 'element-plus'
-import 'element-plus/theme-chalk/index.css'
+import router from './router/index.js'
+import './assets/icon/iconfont.css'
+import { VueMasonryPlugin } from "vue-masonry";
 
-createApp(App).use(router).use(ElementPlus).mount('#app')
+const url = "http://127.0.0.1:8081"
+let app = createApp(App)
+
+app.provide('url',url)
+app.use(router).use(VueMasonryPlugin).mount('#app')

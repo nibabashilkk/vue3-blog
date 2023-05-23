@@ -9,12 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "latest-3",
     "@vue/reactivity": "^3.2.47",
     "@vue/shared": "^3.2.47",
-    "axios": "^1.3.4",
+    "animate.css": "^4.1.1",
+    "dayjs": "^1.11.7",
     "element-plus": "^2.3.0",
+    "highlight.js": "^11.7.0",
+    "marked": "^4.3.0",
+    "md-editor-v3": "^3.0.1",
     "swiper": "latest",
+    "unplugin-auto-import": "^0.15.2",
+    "unplugin-vue-components": "^0.24.1",
     "vue": "^3.2.45",
+    "vue-masonry": "^0.16.0",
     "vue-router": "4"
   },
   "devDependencies": {
