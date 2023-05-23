@@ -53,7 +53,7 @@ import NavBar from '../head/NavBar.vue';
 import Footer from '../foot/Footer.vue';
 import Comment from '../comment/Comment.vue';
 import dayjs from 'dayjs'
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 
 let essay = "essay";
 let localStorageValue = localStorage.getItem('essay');
@@ -65,11 +65,12 @@ type essay = {
   img:any,
   content: String
 }
+const url = inject("url");
 
 getEssay();
 
 function getEssay(){
-    fetch('/api/essay/get',{
+    fetch(url+'/essay/get',{
         method:'get'
     }).then(data=>data.json()).then((date: any)=>{
       date.forEach((element: { createTime: string | number | Date | dayjs.Dayjs | null | undefined; }) => {

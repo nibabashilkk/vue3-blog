@@ -116,11 +116,12 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 import 'element-plus/theme-chalk/display.css'
 import dayjs from 'dayjs';
 import {useRoute} from 'vue-router'
 
+const url = inject("url");
 const route = useRoute();
 const currentPage = Number(route.params.currentPage ? route.params.currentPage : 1);
 console.log(currentPage)
@@ -137,7 +138,7 @@ function getData(current:Number){
     "current":current,
     "pageSize":10
   }
-  fetch('/api/article/getRecentPost',{
+  fetch(url+'/article/getRecentPost',{
     method: 'post',
     headers:{
       'Content-Type':'application/json'

@@ -47,12 +47,13 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref,inject } from 'vue';
 import { useRoute } from 'vue-router';
 import dayjs from 'dayjs';
 import NavBar from '../head/NavBar.vue';
 import CategoryLine from '../index/CategoryLine.vue';
 
+const url = inject("url");
 const route = useRoute();
 const tagName = route.params.tagName;
 const currentPage = Number(route.params.currentPage);
@@ -71,7 +72,7 @@ function getArticleByTag(){
         pageSize:16,
         tagName: tagName
     }
-    fetch('/api/tag/getArticle',{
+    fetch(url+'/tag/getArticle',{
         method:'post',
         headers:{
             'Content-Type':'application/json'

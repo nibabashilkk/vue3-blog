@@ -6,8 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import {ref,onMounted,onBeforeUnmount} from 'vue'
+import {ref,onMounted,onBeforeUnmount,inject} from 'vue'
 
+const url = inject("url");
 let localStorageValue = localStorage.getItem('essay');
 let value = localStorageValue!=null ? JSON.parse(localStorageValue) : null;
 let essayList = ref(value);
@@ -30,7 +31,7 @@ onBeforeUnmount(() => {
 })
 
 function getEssay(){
-    fetch('/api/essay/get',{
+    fetch(url+'/essay/get',{
         method:'get'
     }).then(data=>data.json()).then((data: any)=>{
         essayList.value=data.data;

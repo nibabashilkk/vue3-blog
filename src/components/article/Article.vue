@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 import {useRoute} from 'vue-router'
 import Aside from '../aside/Aside.vue'
 import NavBar from '../head/NavBar.vue'
@@ -84,7 +84,7 @@ import PreAndNextArticle from './PreAndNextArticle.vue'
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-
+const url = inject("url");
 const route = useRoute();
 const articleId = route.params.articleId;
 let localStorageValue = localStorage.getItem(articleId.toString());
@@ -102,7 +102,7 @@ getArticle();
 
 
 function getArticle(){
-    fetch('/api/article/getArticle',{
+    fetch(url+'/article/getArticle',{
         method:'post',
         headers:{
             'Content-Type':'text/plain'

@@ -5,7 +5,7 @@ import router from './router/index.js'
 import './assets/icon/iconfont.css'
 import { VueMasonryPlugin } from "vue-masonry";
 
-const url = "http://127.0.0.1:8081"
+const url = "http://43.143.231.27:8081"
 let app = createApp(App)
 
 app.provide('url',url)

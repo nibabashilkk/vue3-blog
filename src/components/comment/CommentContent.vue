@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import Avatar from '../aside/Avatar.vue'
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 import child from './ChildContent.vue'
 import replay from './CommentSubmit.vue'
 import {ChatDotRound } from '@element-plus/icons-vue'
@@ -36,6 +36,7 @@ import {ChatDotRound } from '@element-plus/icons-vue'
 const props = defineProps({
   blogId:String
 })
+const url = inject("url");
 let replayId=ref();
 function isReplay(comment:any){
   replayId.value=comment.id;
@@ -47,8 +48,8 @@ function setReplayId(value){
   replayId.value = value
 }
 function getComments(){
-  let url = '/api/comment/get/'+props.blogId;
-  fetch(url,{
+  let uri = url+'/comment/get/'+props.blogId;
+  fetch(uri,{
     method:'get'
   }).then(data=>data.json()).then(data=>{
     commentList.value = data.data;

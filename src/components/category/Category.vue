@@ -45,7 +45,7 @@ getCategoryList();
 console.log(getCategoryArticleCount("日常推荐"))
 
 function getCategoryList(){
-  fetch('/api/category/getAllCategory',{
+  fetch(url+'/category/getAllCategory',{
     method:'get',
   }).then(data=>data.json()).then(data=>{
     categoryList.value = data.data;
@@ -58,7 +58,7 @@ function getCategoryArticleCount(categoryName:String){
         pageSize:16,
         categoryName: categoryName
     }
-    let value = fetch('/api/category/getArticle',{
+    let value = fetch(url+'/category/getArticle',{
         method:'post',
         headers:{
             'Content-Type':'application/json'

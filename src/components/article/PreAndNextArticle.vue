@@ -28,11 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 const props = defineProps({
     id:Number
 })
 
+const url = inject("url");
 let preAndNextArticle = ref();
 let leftWidth = ref(12);
 let rightWidth = ref(12);
@@ -40,7 +41,7 @@ let rightWidth = ref(12);
 getPreAndNextArticle(props.id)
 
 function getPreAndNextArticle(id:any){
-    fetch('/api/article/getPreAndNextArticle',{
+    fetch(url+'/article/getPreAndNextArticle',{
         method:'post',
         headers:{
             'Content-Type':'application/json'

@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { UserFilled } from '@element-plus/icons-vue'
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 
 const props = defineProps({
   parentComment: Object,
@@ -72,7 +72,7 @@ function submit(){
     parentId: props.parentComment ? props.parentComment.id : '-1'
   }
   console.log(data)
-  fetch("/api/comment/addComment",{
+  fetch(url+"/comment/addComment",{
     method:'post',
     headers:{
       'Content-Type':'application/json'

@@ -47,12 +47,13 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref,inject } from 'vue';
 import { useRoute } from 'vue-router';
 import dayjs from 'dayjs';
 import NavBar from '../head/NavBar.vue';
 import CategoryLine from '../index/CategoryLine.vue';
 
+const url = inject("url");
 const route = useRoute();
 const categoryName = route.params.categoryName;
 const currentPage = Number(route.params.currentPage);
@@ -72,7 +73,7 @@ function getArticleByCategory(){
         pageSize:16,
         categoryName: categoryName
     }
-    fetch('/api/category/getArticle',{
+    fetch(url+'/category/getArticle',{
         method:'post',
         headers:{
             'Content-Type':'application/json'

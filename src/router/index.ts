@@ -30,7 +30,7 @@ router.afterEach((to, from) => {
         if(value){
             window.document.title = value.title+" | 爱加班的小刘"
         }else{
-            fetch('/api/article/getArticle',{
+            fetch('http://43.143.231.27:8081/article/getArticle',{
                 method:'post',
                 headers:{
                     'Content-Type':'text/plain'

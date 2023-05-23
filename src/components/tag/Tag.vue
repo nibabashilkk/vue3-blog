@@ -43,7 +43,7 @@ let tagList = ref();
 getTagList();
 
 function getTagList(){
-  fetch('/api/tag/getTag',{
+  fetch(url+'/tag/getTag',{
     method:'get',
   }).then(data=>data.json()).then(data=>{
     tagList.value = data.data;

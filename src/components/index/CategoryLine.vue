@@ -9,15 +9,16 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,inject} from 'vue'
 
+const url = inject("url");
 let localStorageValue = localStorage.getItem('allCategory');
 let value = localStorageValue!=null ? JSON.parse(localStorageValue) : null;
 let categoryList = ref(value);
 getCategory();
 
 function getCategory(){
-  fetch('api/category/getAllCategory',{
+  fetch(url+'/category/getAllCategory',{
     method: 'get'
   }).then(data=>data.json()).then((data:any)=>{
     categoryList.value = data.data;

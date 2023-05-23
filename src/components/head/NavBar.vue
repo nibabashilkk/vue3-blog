@@ -57,8 +57,11 @@
 </template>
 
 <script setup lang="ts">
+import { inject } from 'vue';
+
+const url = inject("url");
 function getRandomArticle(){
-    fetch('/api/article/getRandomArticle',{
+    fetch(url+'/article/getRandomArticle',{
         method:'get'
     }).then(data=>data.json()).then(data=>{
         console.log("/p/"+data.data.articleId);

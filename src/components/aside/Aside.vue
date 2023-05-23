@@ -79,9 +79,10 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
+import {ref,inject} from 'vue';
 // import AsideDirectory from './AsideDirectory.vue'
 
+const url = inject("url");
 let localStorageValue = localStorage.getItem('asideRecentArticle');
 let value = localStorageValue!=null ? JSON.parse(localStorageValue):null;
 let recentArticleList = ref(value);
@@ -94,28 +95,28 @@ getTagCount();
 getCategoryCount();
 
 function getCategoryCount(){
-  fetch('/api/category/getCategoryCount',{
+  fetch(url+'/category/getCategoryCount',{
     method:'get'
   }).then(data=>data.json()).then(data=>{
     categoryCount.value = data.data;
   })
 }
 function getTagCount(){
-  fetch('/api/tag/getTagCount',{
+  fetch(url+'/tag/getTagCount',{
     method:'get'
   }).then(data=>data.json()).then(data=>{
     tagCount.value = data.data;
   })
 }
 function getArticleCount(){
-  fetch('/api/article/getArticleCount',{
+  fetch(url+'/article/getArticleCount',{
     method:'get'
   }).then(data=>data.json()).then(data=>{
     articleCount.value = data.data;
   })
 }
 function getRecentArticle(){
-  fetch('/api/article/getRecentArticle',{
+  fetch(url+'/article/getRecentArticle',{
     method:'get'
   }).then(data=>data.json()).then(data=>{
     recentArticleList.value = data.data;
