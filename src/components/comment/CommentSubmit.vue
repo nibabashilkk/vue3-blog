@@ -46,6 +46,7 @@ const props = defineProps({
   blogId:String
 })
 
+const url = inject("url");
 const metaInputs = [{
     key: 'name', locale: "昵称", name: 'name', type: 'text'
 },{
